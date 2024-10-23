@@ -1,0 +1,253 @@
+body {
+  background-color: #1D1F2B;
+  background: radial-gradient(circle, rgba(29,31,43,1) 21%, rgba(13,15,23,1) 100%);
+  font-family: "Saira Condensed", sans-serif;
+  font-weight: bold;
+}
+
+html {
+  background: #1D1F2B;
+}
+
+.display-4, .lead {
+  font-weight: bold !important;
+}
+
+.display-4 {
+  font-size: 3.8em;
+}
+
+a {
+  color: #E0B94D;
+}
+
+footer {
+  font-size: 0.7em;
+}
+
+.links {
+  font-size: 1.3em !important; 
+}
+
+.container {
+  z-index: 2;
+}
+
+.lead {
+  font-size: 1.25em;
+}
+
+#mainHolder {
+  min-height: 100vh;
+}
+
+.roulette-wheel {
+  max-width: 100%;
+  width: 400px;
+  aspect-ratio: 1 / 1;
+  height: 100%;
+  background-image: url('roulette-wheel.png'); /* Replace with your roulette wheel image */
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  margin: 0 auto;
+  position: relative;
+  transition: transform 5s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.roulette-pointer {
+  width: 0; 
+  height: 0; 
+  border-radius: 10px;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 30px solid #FF9B00;
+}
+
+.spin {
+  transform: rotate(0deg);
+}
+
+.spin-end {
+  transform: rotate(1440deg); /* 4 full spins plus landing on 0 */
+}
+
+.hidden {
+  display: none;
+}
+
+.chat-message {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 16px;
+  color: #E0B94D;
+}
+
+.form-control, .btn {
+  border-radius: 16px;
+}
+
+.user-message {
+  border: solid #E0B94D 1px;
+  text-align: right;
+  margin-left: auto;
+}
+
+.jojobet-message {
+  border: solid #E0B94D 1px;
+  text-align: left;
+  margin-right: auto;
+}
+
+.victory-message {
+  text-align: center;
+  color: #E0B94D !important;
+}
+
+@keyframes spin {
+  to {
+    --bg-angle: 360deg;
+  }
+}
+
+.img {
+  width: 85%;
+  max-width: 400px;
+}
+
+.holderLog, .glass {
+  background: rgba(29,31,43,0.58);
+  box-shadow: 0 8px 32px 0 rgba(29,31,43,0.37);
+  backdrop-filter: blur(6.5px);
+  -webkit-backdrop-filter: blur(6.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(224,185,77,0.18);
+}
+
+::placeholder {
+  color: #E0B94D !important;
+  opacity: 1;
+}
+
+/* Vendor prefixes for better browser support */
+::-webkit-input-placeholder {
+  color: #E0B94D !important;
+}
+
+:-ms-input-placeholder {
+  color: #E0B94D !important;
+}
+
+::-moz-placeholder {
+  color: #E0B94D !important;
+  opacity: 1;
+}
+
+:-moz-placeholder {
+  color: #E0B94D !important;
+  opacity: 1;
+}
+
+.lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  margin: auto;
+  width: 90vw;
+}
+
+.line {
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  top: 0;
+  left: 50%;
+  background: rgba(224,185,77,0.1);
+  overflow: hidden;
+}
+
+.line::after {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 15vh;
+  width: 100%;
+  top: -50%;
+  transition: box-shadow 0.5s;
+  left: 0;
+  background: linear-gradient(to bottom, rgba(224,185,77,0) 0%, #E0B94D 75%, #E0B94D 100%);
+  animation: drop 2s 0s infinite;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+}
+
+.line:nth-child(1) {
+  margin-left: -40%;
+}
+
+.line:nth-child(1)::after {
+  animation-delay: 0.5s;
+}
+
+.line:nth-child(2) {
+  margin-left: -20%;
+}
+
+.line:nth-child(2)::after {
+  animation-delay: 0.7s;
+}
+
+.line:nth-child(3) {
+  margin-left: 0%;
+}
+
+.line:nth-child(3)::after {
+  animation-delay: 0.9s;
+}
+
+.line:nth-child(4) {
+  margin-left: 20%;
+}
+
+.line:nth-child(4)::after {
+  animation-delay: 1.1s;
+}
+
+.line:nth-child(5) {
+  margin-left: 40%;
+}
+
+.line:nth-child(5)::after {
+  animation-delay: 1.3s;
+}
+
+@keyframes drop {
+  0% {
+    top: -50%;
+  }
+  100% {
+    top: 110%;
+  }
+}
+
+/* Add styles for victory state */
+.line.victory::after {
+  background: linear-gradient(to bottom, rgba(255,155,0,0) 0%, #FF9B00 75%, #FF9B00 100%);
+  box-shadow: 0 0 10px rgba(255,155,0,0.5);
+  animation: drop 2s 0s infinite, glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 10px 2px rgba(255,155,0,0.5);
+  }
+  100% {
+    box-shadow: 0 0 20px 5px rgba(255,155,0,1);
+  }
+}
+
+.text-section {
+  text-align: justify;
+} 
